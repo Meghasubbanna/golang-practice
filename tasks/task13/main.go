@@ -2,92 +2,44 @@ package main
 
 import (
 	"errors"
-
 	"fmt"
 )
 
 func main() {
-
-	/*slice1 := make([]int, 100)
-	  for i, _ := range slice1 {
-	      slice1[i] = rand.Intn(50)
-
-	  }
-
-	  slice1 := []int{4, 5, 6, 7, 1, 2, 3, 4, 1}
-	  mymap := make(map[int]uint16)
-	  for _, v := range slice1 {
-
-	      if _, ok := mymap[v]; ok {
-
-	          mymap[v] = mymap[v] + 1
-
-	      } else {
-
-	          mymap[v] = 1
-
-	      }
-
-	  }
-
-	  fmt.Println(mymap)*/
-
-	my := map[string]int{"megha": 1, "pratheeksha": 2}
-
-	Key := "megha"
-
-	Bool, err := Delete(my, Key)
-
-	fmt.Println(Bool, err)
-
-	//key1 := "hii"
-
-	//	bool1, err1 := Update(my, key1)
-
-	fmt.Println()
-
-}
-
-func Delete(my map[string]int, key string) (bool, error) {
-
-	if my == nil {
-
-		return false, errors.New("map is nill")
-
+	myMap := map[string]int{
+		"megha":       1,
+		"pratheeksha": 2,
 	}
 
-	if _, ok := my[key]; ok {
+	key := "megha"
+	newValue := 3
+	boolVal, err := Update(myMap, key, newValue)
+	fmt.Println(boolVal, err)
+	fmt.Println(myMap)
+}
 
-		delete(my, key)
+func Delete(myMap map[string]int, key string) (bool, error) {
+	if myMap == nil {
+		return false, errors.New("map is nil")
+	}
 
+	if _, ok := myMap[key]; ok {
+		delete(myMap, key)
 		return true, nil
-
 	} else {
-
 		return false, nil
-
 	}
-
 }
 
-func Update(my map[string]int, key string) (bool, error) {
-
-	if my == nil {
-
-		return false, errors.New("map is nill")
-
+func Update(myMap map[string]int, key string, newValue int) (bool, error) {
+	if myMap == nil {
+		return false, errors.New("map is nil")
 	}
 
-	if _, ok := my[key]; ok {
-
-		delete(my, key)
-
+	if _, ok := myMap[key]; ok {
+		myMap[key] = newValue
 		return true, nil
-
 	} else {
-
-		return false, errors.New("key doesntexist")
-
+		return false, errors.New("key doesn't exist")
 	}
-
 }
