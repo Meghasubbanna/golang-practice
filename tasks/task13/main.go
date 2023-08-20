@@ -32,9 +32,9 @@ func main() {
 
 	  fmt.Println(mymap)*/
 
-	my := map[string]int{"harshi": 1, "dileep": 2}
+	my := map[string]int{"megha": 1, "pratheeksha": 2}
 
-	Key := "harshi"
+	Key := "megha"
 
 	Bool, err := Delete(my, Key)
 
